@@ -58,7 +58,7 @@ public class SudokuGenerator {
             board.forceSet(r, c, 0);
 
             SudokuBoard testCopy = new SudokuBoard(board.toArray());
-            if (SudokuSolver.countSolutions(testCopy, 2) != 2) {
+            if (SudokuSolver.countSolutions(testCopy, 2) != 1) {
                 board.forceSet(r, c, backup);
             } else {
                 filled--;

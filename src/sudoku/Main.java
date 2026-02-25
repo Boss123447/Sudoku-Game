@@ -2,10 +2,19 @@ package sudoku;
 
 public class Main {
     public static void main(String[] args) {
-        SudokuBoard board = new SudokuBoard();
-        board.forceSet(0,0,3);
-        board.print();
-        System.out.println(board.isLegalMove(0, 1, 5));
-        System.out.println(board.isLegalMove(0, 1, 3));
+        SudokuGenerator gen = new SudokuGenerator();
+
+        SudokuBoard puzzle = gen.generate(SudokuGenerator.Difficulty.MEDIUM);
+        System.out.println("Puzzle:");
+        puzzle.print();
+
+        SudokuBoard solved = new SudokuBoard(puzzle.toArray());
+        boolean solvable = SudokuSolver.solve(solved);
+
+        System.out.println("\nSolved:");
+        solved.print();
+
+        System.out.println("\nSolvable? " + solvable);
+        System.out.println("Solved correctly? " + solved.isSolved());
     }
 }
